@@ -144,13 +144,24 @@ function startDrag(e, item, itemEl){
   itemEl.setPointerCapture?.(e.pointerId);
   itemEl.classList.add("picked");
 
-  // create ghost
-  const ghostWrap = document.createElement("div");
-  ghostWrap.className = "drag-ghost";
-  const clone = itemEl.cloneNode(true);
-  clone.classList.remove("picked");
-  ghostWrap.appendChild(clone);
-  document.body.appendChild(ghostWrap);
+  // create ghost (chỉ ảnh, không kéo theo label + badge)
+const ghostWrap = document.createElement("div");
+ghostWrap.className = "drag-ghost";
+
+const ghostCard = document.createElement("div");
+ghostCard.className = "ghost-card";
+
+const img = itemEl.querySelector("img")?.getAttribute("src");
+if(img){
+  ghostCard.innerHTML = `<img src="${img}" alt="${item.label}">`;
+} else {
+  // fallback nếu sau này có emoji
+  const em = itemEl.querySelector(".emoji")?.textContent || "🎁";
+  ghostCard.innerHTML = `<div class="emoji" style="font-size:44px">${em}</div>`;
+}
+
+ghostWrap.appendChild(ghostCard);
+document.body.appendChild(ghostWrap);
 
   dragging = {
     item, itemEl,
