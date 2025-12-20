@@ -12,7 +12,7 @@ const BINS = [
 
 const ITEMS = [
   { id:"thanTai",   label:"Thần Tài",   cat:"decor", img:"assets/items/than-tai.png" },
-  { id:"phaohoa",   label:"Pháo hoa",   cat:"decor", img:"assets/items/phao-hoa.png" },
+  { id:"phaohoa",   label:"Pháo",   cat:"decor", img:"assets/items/phao.png" },
   { id:"denlong",   label:"Lồng Đèn",   cat:"decor", img:"assets/items/long-den.png" },
   { id:"mutTet",    label:"Mứt Tết",    cat:"food",  img:"assets/items/mut-tet.png" },
   { id:"banhchung", label:"Bánh chưng", cat:"food",  img:"assets/items/banh-chung.png" },
