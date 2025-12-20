@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Game Phân Loại Đồ Dùng Ngày Tết</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Fireworks background -->
+  <canvas id="bgFx" aria-hidden="true"></canvas>
+  <div class="tet-decor" aria-hidden="true">
+  <div class="float mai">🌸</div>
+  <div class="float mai2">💰</div>
+  <div class="float mai3">🍊</div>
+
+  <div class="float banhtet">🎊</div>
+  <div class="float banhchung">🧧</div>
+  <div class="float lixi">🧧</div>
+
+  <div class="float lanternL">🎉</div>
+  <div class="float lanternR">🏮</div>
+
+  <div class="float aoDai">🎁</div>
+  <div class="float peach">🌸</div>
+</div>
+
+    <div class="corner-lantern" aria-hidden="true"></div>
+  <header class="top">
+    <div class="title">
+      <div class="brand">🎇</div>
+      <div>
+        <h1>Game Phân Loại Đồ Dùng Ngày Tết</h1>
+        <p>Quẫy lên anh em ơi😼</p>
+      </div>
+    </div>
+
+    <div class="hud">
+      <div class="pill">⭐ Điểm: <span id="score">0</span></div>
+      <div class="pill">🔥 Combo: <span id="combo">0</span></div>
+      <div class="pill">✅ Đúng: <span id="correct">0</span>/<span id="total">0</span></div>
+    </div>
+  </header>
+<main class="wrap">
+  <div class="layout">
+    <!-- LEFT -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>🧺 Vật phẩm</h2>
+        <div class="btns">
+          <button class="btn ghost" id="shuffleBtn">Xáo trộn</button>
+          <button class="btn primary" id="resetBtn">Chơi lại</button>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="items-grid" id="itemsGrid"></div>
+      </div>
+    </section>
+
+    <!-- RIGHT -->
+    <section class="panel panel-right">
+      <div class="panel-head">
+        <h2>🎯 Nhóm phân loại</h2>
+        <div class="btns">
+          <button class="btn ghost" id="hintBtn">Gợi ý</button>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="bins" id="bins"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal" id="winModal" aria-hidden="true">
+  <div class="modal-card">
+    <h3>🎊 Thắng rồi Hoàng Thượng!</h3>
+    <p>Phân loại gọn như bày mâm Tết 😤✨</p>
+
+    <div class="stats">
+      <div class="stat">
+        <b id="mScore">0</b>
+        <small>Điểm</small>
+      </div>
+      <div class="stat">
+        <b id="mCombo">0</b>
+        <small>Combo cao nhất</small>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn primary" id="playAgainBtn">Chơi lại</button>
+      <button class="btn ghost" id="closeModalBtn">Đóng</button>
+    </div>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
