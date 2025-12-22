@@ -750,3 +750,34 @@ body:after{
    - không phụ thuộc .wrap/.top
 ============================== */
 
+/* 🎵 Nút nhạc Tết */
+.music-toggle{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 50;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  font-size: 20px;
+  cursor: pointer;
+
+  background: linear-gradient(180deg, #ffd54a, #ffb000);
+  border: 2px solid rgba(255,255,255,.7);
+  box-shadow: 0 10px 28px rgba(0,0,0,.25);
+
+  display: grid;
+  place-items: center;
+
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.music-toggle:hover{
+  transform: scale(1.08);
+  box-shadow: 0 14px 36px rgba(0,0,0,.35);
+}
+.music-toggle.off{
+  filter: grayscale(1);
+  opacity: .7;
+}

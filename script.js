@@ -480,6 +480,38 @@ ctx.restore();
 }
 
 const bgFireworks = makeFireworks(els.bgFx);
+const music = document.getElementById('tetMusic');
+const btnMusic = document.getElementById('musicToggle');
+
+let musicOn = false;
+
+// Browser không cho autoplay -> bật khi user chạm lần đầu
+function tryPlayMusic(){
+  if (!musicOn) {
+    music.volume = 0.35; // 🔊 vừa tai
+    music.play().then(()=>{
+      musicOn = true;
+      btnMusic.classList.remove('off');
+      btnMusic.textContent = '🔊';
+    }).catch(()=>{});
+  }
+}
+
+// Bật / tắt thủ công
+btnMusic.addEventListener('click', (e)=>{
+  e.stopPropagation();
+  if (musicOn){
+    music.pause();
+    musicOn = false;
+    btnMusic.classList.add('off');
+    btnMusic.textContent = '🔇';
+  } else {
+    tryPlayMusic();
+  }
+});
+
+// Tự bật nhạc khi user chạm màn hình lần đầu
+window.addEventListener('pointerdown', tryPlayMusic, { once: true });
 
 /* start */
 initState();
