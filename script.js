@@ -6,8 +6,8 @@
 */
 
 const BINS = [
-  { id:"food",  name:"Đồ ăn ngày Tết", icon:"🍱", hint:"Bánh, mứt, hạt..." },
-  { id:"decor", name:"Đồ trang trí",   icon:"🏮", hint:"Đèn lồng, câu đối, dây treo..." },
+  { id:"food",  name:"Đồ ăn ngày Tết", icon:"🍱", hint:"Bánh, mứt,..." },
+  { id:"decor", name:"Đồ trang trí",   icon:"🏮", hint:"Đèn lồng, câu đối,..." },
 ];
 
 const ITEMS = [
@@ -77,11 +77,10 @@ function renderHud(){
 }
 
 function showToast(msg){
-  els.toast.textContent = msg;
-  els.toast.classList.add("show");
-  clearTimeout(showToast._t);
-  showToast._t = setTimeout(()=>els.toast.classList.remove("show"), 1050);
+  // ❌ tắt toàn bộ toast
+  return;
 }
+
 
 function shuffle(arr){
   const a = arr.slice();
@@ -117,7 +116,6 @@ function makeItemEl(item){
 
   const hasImg = item.img && item.img.trim().length>0;
   div.innerHTML = `
-    <div class="badge">Tết</div>
     <div class="thumb">
       ${hasImg ? `<img src="${item.img}" alt="${item.label}">` : `<div class="emoji">${item.emoji}</div>`}
     </div>
@@ -127,7 +125,6 @@ function makeItemEl(item){
   div.addEventListener("pointerdown", (e)=>startDrag(e, item, div));
   return div;
 }
-
 function buildItems(){
   els.itemsGrid.innerHTML = "";
   const list = shuffle(ITEMS).filter(it=>!state.placed.has(it.id));
@@ -137,6 +134,7 @@ function buildItems(){
 }
 
 function startDrag(e, item, itemEl){
+  document.body.style.overflow = "hidden";
     e.preventDefault();            // chặn select xanh
   e.stopPropagation();
   if(state.placed.has(item.id)) return;
@@ -211,6 +209,7 @@ function updateOverBin(x,y){
 }
 
 function onUp(e){
+  document.body.style.overflow = "hidden";
   window.removeEventListener("pointermove", onMove);
 
   if(!dragging) return;
